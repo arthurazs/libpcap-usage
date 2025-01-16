@@ -4,7 +4,7 @@ SRC := src
 CODE := $(SRC)/dev.c
 BIN := build
 TARGET := $(BIN)/dev.out
-LD_LIBRARY_PATH := .
+LD_LIBRARY_PATH := $(LD_LIBRARY_PATH):libpcap
 
 .PHONY: all
 all: run
