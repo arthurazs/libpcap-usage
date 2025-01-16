@@ -3,13 +3,12 @@
 #include <pcap.h>
 #pragma clang diagnostic pop
 
-#include <stdlib.h>
 #include <netinet/in.h>
-
+#include <stdlib.h>
 
 int main(void) {
   char errbuf[PCAP_ERRBUF_SIZE];
-  pcap_if_t * alldevs;
+  pcap_if_t *alldevs, *head;
   // TODO: get lo dev and try pcap_sendpacket
   /*pcap_if_t dev;*/
 
@@ -18,6 +17,7 @@ int main(void) {
     fprintf(stderr, "pcap_findalldevs: %s\n", errbuf);
     return EXIT_FAILURE;
   }
+  head = alldevs;
 
   printf("Listing devices...\n");
   while (alldevs != NULL) {
@@ -30,7 +30,8 @@ int main(void) {
   }
   printf("Done!\n");
 
-  pcap_freealldevs(alldevs);
+  pcap_freealldevs(head);
+  head = NULL;
   alldevs = NULL;
   return EXIT_SUCCESS;
 }
