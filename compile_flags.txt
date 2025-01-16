@@ -1,6 +1,6 @@
--I${HOME}/git/libpcap-1.10.5
--L${HOME}/git/libpcap-1.10.5
--l:libpcap.so.1.10.5
+-Ilibpcap
+-Llibpcap
+-lpcap
 -Weverything
 -Werror
 -Wno-unsafe-buffer-usage
